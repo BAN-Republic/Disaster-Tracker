@@ -30,7 +30,7 @@ export const Donor = () => {
             🚛
           </div>
           <div>
-            <h2 className="font-bold text-xl text-gray-800">Relief Unit #1</h2>
+            <h2 className="font-bold text-xl text-gray-800">Relief Unit</h2>
             <p className="text-gray-500 text-sm">Collecting Donations Now</p>
           </div>
         </div>
