@@ -56,14 +56,15 @@ export const MapComponent: React.FC<MapProps> = ({ vehicleLocation, userLocation
     >
       {/* The Emergency Vehicle Marker */}
       {vehicleLocation && (
-        <Marker
-          position={vehicleLocation}
-          icon={{
-            url: "https://cdn-icons-png.flaticon.com/512/233/233968.png", // Truck Icon
-            scaledSize: new google.maps.Size(50, 50)
-          }}
-          animation={google.maps.Animation.DROP}
-        />
+  <Marker
+  position={vehicleLocation}
+  icon={{
+    // This is a direct link to a Red Bus icon
+    url: "https://cdn-icons-png.flaticon.com/512/1036/1036152.png", 
+    scaledSize: new google.maps.Size(55, 55) // Size of the bus (Width, Height)
+  }}
+  animation={google.maps.Animation.DROP}
+/>
       )}
 
       {/* The User's Location (Optional) */}
