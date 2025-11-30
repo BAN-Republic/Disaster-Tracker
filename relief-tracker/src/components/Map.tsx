@@ -1,0 +1,85 @@
+import React, { useState, useCallback } from 'react';
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+
+// Types
+interface Location {
+  lat: number;
+  lng: number;
+}
+
+interface MapProps {
+  vehicleLocation: Location | null;
+  userLocation: Location | null;
+}
+
+const containerStyle = {
+  width: '100%',
+  height: '100dvh' // Dynamic viewport height for mobile
+};
+
+const center = {
+  lat: 6.9271, // Default (e.g., Colombo, Sri Lanka)
+  lng: 79.8612
+};
+
+export const MapComponent: React.FC<MapProps> = ({ vehicleLocation, userLocation }) => {
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "" 
+  });
+
+  const [map, setMap] = useState<google.maps.Map | null>(null);
+
+  const onLoad = useCallback(function callback(map: google.maps.Map) {
+    setMap(map);
+  }, []);
+
+  const onUnmount = useCallback(function callback(map: google.maps.Map) {
+    setMap(null);
+  }, []);
+
+  if (!isLoaded) return <div className="flex justify-center items-center h-screen">Loading Map...</div>;
+
+  return (
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={vehicleLocation || center}
+      zoom={14}
+      onLoad={onLoad}
+      onUnmount={onUnmount}
+      options={{
+        zoomControl: false,
+        streetViewControl: false,
+        mapTypeControl: false,
+        fullscreenControl: false,
+      }}
+    >
+      {/* The Emergency Vehicle Marker */}
+      {vehicleLocation && (
+        <Marker
+          position={vehicleLocation}
+          icon={{
+            url: "https://cdn-icons-png.flaticon.com/512/233/233968.png", // Truck Icon
+            scaledSize: new google.maps.Size(50, 50)
+          }}
+          animation={google.maps.Animation.DROP}
+        />
+      )}
+
+      {/* The User's Location (Optional) */}
+      {userLocation && (
+        <Marker
+          position={userLocation}
+          icon={{
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 7,
+            fillColor: "#4285F4",
+            fillOpacity: 1,
+            strokeWeight: 2,
+            strokeColor: "white",
+          }}
+        />
+      )}
+    </GoogleMap>
+  );
+};
