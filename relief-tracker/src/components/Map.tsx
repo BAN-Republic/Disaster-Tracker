@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-
+import TruckIcon from '../assets/delivery-truck.png';
 // Types
 interface Location {
   lat: number;
@@ -60,7 +60,7 @@ export const MapComponent: React.FC<MapProps> = ({ vehicleLocation, userLocation
   position={vehicleLocation}
   icon={{
     // This is a direct link to a Red Bus icon
-    url: "https://www.flaticon.com/free-icon/transportation_11421619?term=bus+trip&page=1&position=13&origin=search&related_id=11421619", 
+    url: TruckIcon, 
     scaledSize: new google.maps.Size(55, 55) // Size of the bus (Width, Height)
   }}
   animation={google.maps.Animation.DROP}
