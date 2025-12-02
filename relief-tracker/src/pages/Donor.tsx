@@ -28,14 +28,14 @@ export const Donor = () => {
       <MapComponent vehicleLocation={vehicleLocation} userLocation={null} />
 
       {/* Donor Info Card */}
-      <div className="absolute bottom-0 w-full p-6 bg-white rounded-t-3xl shadow-2xl z-10 pb-10">
+      <div className="absolute bottom-0 w-full p-6 bg-amber-200 rounded-t-3xl shadow-2xl z-10 pb-10">
         <div className="flex items-center gap-4">
         {/* 2. REPLACED SECTION: Now using the imported image */}
-        <div className="flex justify-center items-center mb-4">
+        <div className="w-full flex flex-col items-center justify-center">
           <img 
             src={TruckIcon} 
             alt="Relief Unit" 
-            className="h-24 w-auto object-contain" // Adjusted height to look good on mobile
+            className="h-28 w-auto object-contain" 
           />
         </div>
         </div>
