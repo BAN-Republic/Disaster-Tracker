@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
-import TruckIcon from '../assets/iCON.png';
+import TruckIcon from '../assets/01.png';
 // Types
 interface Location {
   lat: number;
