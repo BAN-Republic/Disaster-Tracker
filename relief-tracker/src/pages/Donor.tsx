@@ -1,15 +1,19 @@
 // src/pages/Donor.tsx
-import { useEffect, useState } from 'react';
-import { ref, onValue } from 'firebase/database';
-import { db } from '../firebase';
-import { MapComponent } from '../components/Map';
+import { useEffect, useState } from "react";
+import { ref, onValue } from "firebase/database";
+import { db } from "../firebase";
+import { MapComponent } from "../components/Map";
+import TruckIcon from '../assets/01.png';
 
 export const Donor = () => {
-  const [vehicleLocation, setVehicleLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [vehicleLocation, setVehicleLocation] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
 
   // Listen to vehicle location
   useEffect(() => {
-    const vehicleRef = ref(db, 'vehicles/emergency-unit-1');
+    const vehicleRef = ref(db, "vehicles/emergency-unit-1");
     const unsubscribe = onValue(vehicleRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
@@ -22,17 +26,18 @@ export const Donor = () => {
   return (
     <div className="relative w-full h-screen">
       <MapComponent vehicleLocation={vehicleLocation} userLocation={null} />
-      
+
       {/* Donor Info Card */}
       <div className="absolute bottom-0 w-full p-6 bg-white rounded-t-3xl shadow-2xl z-10 pb-10">
         <div className="flex items-center gap-4">
-          {/* <div className="bg-red-600 p-3 rounded-full text-white shadow-lg">
-            🚛
-          </div>
-          <div>
-            <h2 className="font-bold text-xl text-gray-800">Relief Unit</h2>
-            <p className="text-gray-500 text-sm">Collecting Donations Now</p>
-          </div> */}
+        {/* 2. REPLACED SECTION: Now using the imported image */}
+        <div className="flex justify-center items-center mb-4">
+          <img 
+            src={TruckIcon} 
+            alt="Relief Unit" 
+            className="h-24 w-auto object-contain" // Adjusted height to look good on mobile
+          />
+        </div>
         </div>
 
         {/* {vehicleLocation ? (
