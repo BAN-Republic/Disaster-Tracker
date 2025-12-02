@@ -26,16 +26,16 @@ export const Donor = () => {
       {/* Donor Info Card */}
       <div className="absolute bottom-0 w-full p-6 bg-white rounded-t-3xl shadow-2xl z-10 pb-10">
         <div className="flex items-center gap-4">
-          <div className="bg-red-600 p-3 rounded-full text-white shadow-lg">
+          {/* <div className="bg-red-600 p-3 rounded-full text-white shadow-lg">
             🚛
           </div>
           <div>
             <h2 className="font-bold text-xl text-gray-800">Relief Unit</h2>
             <p className="text-gray-500 text-sm">Collecting Donations Now</p>
-          </div>
+          </div> */}
         </div>
 
-        {vehicleLocation ? (
+        {/* {vehicleLocation ? (
           <a 
             href={`https://www.google.com/maps/dir/?api=1&destination=${vehicleLocation.lat},${vehicleLocation.lng}`}
             target="_blank"
@@ -47,7 +47,7 @@ export const Donor = () => {
           <div className="mt-6 text-center text-gray-400 text-sm p-4 bg-gray-50 rounded-xl">
             Waiting for driver to start engine...
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
